@@ -1,32 +1,461 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Thomapti | Personal Portfolio</title>
-  <style>
-    body {
-      max-width: 760px;
-      margin: 80px auto;
-      padding: 0 24px;
-      font-family: system-ui, sans-serif;
-      line-height: 1.7;
-      background: #f5f7fb;
-      color: #172033;
-    }
-    h1 { color: #2457c5; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Sih-Jhih Jian — student at Kaohsiung Senior High School, interested in electrical and computer engineering. Projects, programming, and international collaboration.">
+<meta name="theme-color" content="#f7f9fc">
+<title>Sih-Jhih Jian | Engineering Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&amp;family=Montserrat:wght@500..700&amp;display=swap">
+<style>
+:root{
+  --font-body:"Inter","Segoe UI Variable","Segoe UI",-apple-system,BlinkMacSystemFont,Arial,sans-serif;
+  --font-heading:"Montserrat","Inter","Segoe UI Variable","Segoe UI",-apple-system,BlinkMacSystemFont,Arial,sans-serif;
+  color-scheme:light;
+  --bg:#f7f9fc;--surface:#ffffff;--soft:#edf2f8;
+  --section-gray:#eceef2;--section-white:#ffffff;
+  --ink:#101827;--body:#263548;--secondary:#475569;
+  --line:#cbd5e1;--blue:#1d4ed8;--blue-soft:#eaf0ff;
+  --text-body:max(16px,1rem);--text-small:max(14px,.875rem);
+  --radius:12px;
+}
+*{box-sizing:border-box}
+html{font-size:100%;scroll-behavior:smooth;scroll-padding-top:112px}
+body{position:relative;isolation:isolate;margin:0;background:var(--bg);color:var(--body);font-family:var(--font-body);font-size:var(--text-body);line-height:1.7;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+a:focus-visible,button:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-offset:5px;border-radius:4px}
+::selection{background:#cbdcff;color:var(--ink)}
+h1,h2,h3,h4,p{margin-top:0}
+h1,h2,h3,h4{color:var(--ink);font-weight:650;line-height:1.2;letter-spacing:-.035em}
+h1,h2,h3,h4,.brand,.hero-field,.facts dt,.status,.award,.year,.footer-name,.flow,.task-title,strong,b{font-family:var(--font-heading)}
+p{margin-bottom:16px}
+.wrap{width:min(1120px,calc(100% - 64px));margin-inline:auto}
+.skip{position:fixed;top:-80px;left:20px;z-index:50;background:var(--ink);color:#fff;padding:12px 18px}
+.skip:focus{top:12px}
+header{position:sticky;top:0;z-index:20;background:#f8f9fb;background:rgba(248,249,251,.64);border-bottom:1px solid rgba(154,163,175,.55);-webkit-backdrop-filter:blur(24px) saturate(55%);backdrop-filter:blur(24px) saturate(55%)}
+.nav-shell{display:flex;justify-content:space-between;align-items:center;gap:24px;min-height:80px}
+.brand{color:var(--ink);font-size:20px;font-weight:650;letter-spacing:-.025em;white-space:nowrap}
+.navlinks{display:flex;align-items:center;gap:28px}
+.navlinks a{font-size:var(--text-body);font-weight:500;min-height:44px;display:inline-flex;align-items:center;color:#243247}
+.navlinks a:hover{color:var(--blue)}
+.navlinks .github{border:1px solid #aab7c8;border-radius:6px;padding:0 14px}
+.menu-toggle{display:none;min-height:44px;padding:7px 12px;border:1px solid #aab7c8;border-radius:6px;color:var(--ink);background:rgba(255,255,255,.65);align-items:center;gap:8px}
+.menu-toggle svg{width:20px;height:20px}
+.hero{padding:76px 0 62px;border-bottom:1px solid var(--line)}
+.kicker{font-size:var(--text-small);font-weight:600;color:var(--secondary);margin-bottom:16px}
+.hero h1{font-size:clamp(44px,6.5vw,76px);line-height:1.08;letter-spacing:-.055em;margin-bottom:20px}
+.hero-field{font-size:clamp(22px,2.5vw,30px);line-height:1.35;font-weight:550;color:var(--blue);margin-bottom:20px}
+.hero-intro{font-size:max(18px,1.125rem);line-height:1.75;color:var(--body);max-width:690px;margin-bottom:28px}
+.actions{display:flex;gap:16px;flex-wrap:wrap}
+.button{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:48px;padding:10px 20px;border:1px solid var(--blue);border-radius:6px;font-size:var(--text-body);font-weight:600;background:var(--blue);color:#fff}
+.button:hover{background:#163da9;border-color:#163da9}
+.button.secondary{background:var(--surface);color:var(--ink);border-color:#aab7c8}
+.button.secondary:hover{background:var(--soft)}
+section{padding:56px 0}
+.section-muted{background:var(--section-gray)}
+.section-title{font-size:clamp(30px,3.3vw,38px);margin:0 0 28px;line-height:1.2}
+.project{display:grid;grid-template-columns:1.1fr 1fr;overflow:hidden;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius)}
+.project+.project{margin-top:28px}
+.project-content{padding:32px}
+.project-top{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:18px}
+.project h3{font-size:28px;margin:0;line-height:1.25}
+.status{display:inline-block;flex:none;font-size:var(--text-small);line-height:1.5;font-weight:600;padding:5px 10px;border-radius:5px;background:var(--blue-soft);color:#2146a3;border:1px solid #bdcced}
+.project-description{font-size:var(--text-body);line-height:1.75;margin-bottom:24px}
+.facts{margin:0}
+.facts>div{display:grid;grid-template-columns:80px 1fr;gap:16px;margin-bottom:14px}
+.facts dt{font-weight:600;color:var(--ink)}
+.facts dd{margin:0;color:var(--body)}
+details{border-top:1px solid var(--line);margin-top:24px}
+summary{min-height:48px;padding:15px 0 0;cursor:pointer;color:var(--blue);font-size:var(--text-body);font-weight:600}
+summary:hover{color:#163da9}
+.details-copy{padding-top:16px;color:var(--body)}
+.details-copy p:last-child{margin-bottom:0}
+.project-visual{display:flex;flex-direction:column;justify-content:center;gap:24px;margin:0;padding:32px;background:var(--soft);border-left:1px solid var(--line);min-width:0}
+.signal-scene{display:block;width:100%;height:auto}
+.flow{display:flex;align-items:center;justify-content:space-between;gap:12px;font-size:var(--text-body);font-weight:600;color:#173b86}
+.flow .arrow{color:#415570;font-weight:400}
+figcaption{font-size:var(--text-small);line-height:1.7;color:var(--secondary)}
+.app{padding:24px;background:var(--surface);border:1px solid #b9c8db;border-radius:10px}
+.app-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:20px}
+.app-head h4{font-size:24px;margin:0}
+.app-label{font-size:var(--text-small);color:var(--secondary);font-weight:500}
+.task{border-top:1px solid var(--line);padding:16px 0}
+.task-title{font-size:var(--text-body);font-weight:600;color:var(--ink);margin:0 0 4px}
+.task-time{font-size:var(--text-small);line-height:1.6;color:var(--secondary);margin:0}
+.timer{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px;border:1px solid #b9caee;background:var(--blue-soft);border-radius:6px;margin-top:8px}
+.timer-label{font-size:var(--text-body);color:#2146a3;font-weight:500}
+.timer strong{font-size:32px;line-height:1.2;font-weight:600;color:#173b86;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.about{border-block:1px solid var(--line);background:var(--section-white)}
+.about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:64px}
+.about .section-title{margin-bottom:24px}
+.about p{max-width:64ch}
+.education{margin-top:28px}
+.education h3,.skills h3{font-size:22px;margin:0 0 14px}
+.education p{margin:0}
+.education .date{font-size:var(--text-small);color:var(--secondary);margin-top:5px}
+.skills{padding-top:3px}
+.skills .facts>div{grid-template-columns:120px 1fr;gap:20px;padding:16px 0;margin:0;border-bottom:1px solid var(--line)}
+.skills .facts>div:first-child{padding-top:0}
+.skills .facts>div:last-child{border-bottom:0}
+.section-intro{max-width:760px;margin:-8px 0 28px;color:var(--body)}
+.experience-row{display:grid;grid-template-columns:96px 1.15fr 1.2fr;gap:26px;padding:28px 0;border-top:1px solid var(--line)}
+.year{font-size:var(--text-body);font-weight:650;color:#2146a3}
+.experience-row h4{font-size:24px;line-height:1.3;margin:0 0 8px}
+.event{font-size:var(--text-small);line-height:1.6;color:var(--secondary);margin:0}
+.award{display:inline-block;font-size:var(--text-small);line-height:1.6;font-weight:600;color:#2146a3;margin-top:12px}
+.experience-row>p{margin:0;line-height:1.75}
+footer{padding:24px 0 32px;border-top:1px solid var(--line);background:var(--section-white)}
+.footer-row{display:flex;align-items:center;justify-content:space-between;gap:20px;font-size:var(--text-small);color:var(--secondary)}
+.footer-name{color:var(--ink);font-weight:600}
+.footer-links{display:flex;gap:24px}
+.footer-links a{min-height:44px;display:inline-flex;align-items:center}
+.footer-links a:hover{color:var(--blue)}
+
+/* One continuous, full-width background for the navigation and hero. */
+.hero-background{
+  position:absolute;inset:0 0 auto;height:660px;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(ellipse 63% 108% at 3% -8%,hsla(224.3,48%,80%,1) 0%,hsla(224.3,44%,85%,.9) 42%,hsla(224.3,44%,94%,0) 76%),
+    radial-gradient(ellipse 46% 76% at 94% 11%,hsla(224.3,45%,82%,.95) 0%,hsla(224.3,42%,88%,.78) 39%,hsla(224.3,40%,96%,0) 79%),
+    radial-gradient(ellipse 43% 63% at 46% 54%,hsla(224.3,40%,87%,.82) 0%,hsla(224.3,35%,96%,0) 80%),
+    linear-gradient(180deg,#f1f4fb 0%,var(--bg) 97%);
+}
+.hero .kicker{color:#334155}
+.hero-field{color:#163b95}
+.skills h3{margin-bottom:32px}
+.experience-group{padding:0;scroll-margin-top:112px}
+.experience-group+.experience-group{margin-top:48px}
+.experience-group-title{font-size:28px;line-height:1.3;margin:0 0 22px}
+.experience-row>div>p:last-child{margin-bottom:0}
+.year{white-space:nowrap;font-variant-numeric:tabular-nums}
+.experience-links{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:12px}
+.experience-links a{display:inline-flex;align-items:center;gap:7px;min-height:44px;font-size:var(--text-body);font-weight:500;color:var(--blue);text-decoration:underline;text-underline-offset:4px}
+.experience-links a:hover{color:#163da9}
+
+@media(max-width:960px){
+  .wrap{width:calc(100% - 48px)}
+  .navlinks{gap:20px}
+  .project{grid-template-columns:1.05fr 1fr}
+  .project-content,.project-visual{padding:26px}
+  .project-top{flex-direction:column;gap:12px}
+  .about-grid{gap:40px}
+  .experience-row{grid-template-columns:96px 1fr 1.2fr;gap:20px}
+}
+@media(max-width:760px){
+  html{scroll-padding-top:96px}
+  .wrap{width:calc(100% - 36px)}
+  .nav-shell{flex-wrap:wrap;gap:0;min-height:76px;padding:14px 0}
+  .brand{font-size:20px}
+  .navlinks{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:0 20px;margin-top:14px;border-top:1px solid #c2ccda;padding-top:8px}
+  .navlinks a{min-height:48px}
+  .navlinks .github{padding:0;border:0}
+  .js .menu-toggle{display:inline-flex}
+  .js .navlinks{display:none}
+  .js .navlinks[data-open="true"]{display:grid}
+  .hero{padding:48px 0 42px}
+  .hero h1{font-size:clamp(42px,10vw,60px);margin-bottom:18px}
+  .hero-field{font-size:24px;max-width:22ch}
+  .hero-intro{font-size:max(18px,1.125rem)}
+  .actions{gap:12px}
+  section{padding:42px 0}
+  .section-title{font-size:32px;margin-bottom:24px}
+  .project{grid-template-columns:1fr}
+  .project-content,.project-visual{padding:24px}
+  .project-top{gap:12px}
+  .project h3{font-size:26px}
+  .project-visual{border-left:0;border-top:1px solid var(--line);gap:20px}
+  .signal-scene{max-width:480px;margin-inline:auto}
+  .facts>div{grid-template-columns:72px 1fr;gap:14px}
+  .app{max-width:440px;width:100%;margin-inline:auto;padding:20px}
+  .app-head{flex-wrap:wrap;gap:4px}
+  .app-head h4{font-size:24px}
+  .timer{flex-wrap:wrap}
+  .about-grid{grid-template-columns:1fr;gap:32px}
+  .skills .facts>div{grid-template-columns:110px 1fr;gap:14px}
+  .experience-row{grid-template-columns:88px 1fr;gap:12px 16px;padding:24px 0}
+  .experience-row>p{grid-column:2}
+  .experience-row h4{font-size:24px}
+  .footer-row{flex-direction:column;align-items:flex-start;gap:8px}
+}
+@media(max-width:360px){
+  .wrap{width:calc(100% - 28px)}
+  .project-content,.project-visual{padding:20px}
+  .brand{font-size:18px}
+  .menu-toggle{padding:7px 10px}
+  .skills .facts>div{grid-template-columns:1fr;gap:5px}
+  .facts>div{grid-template-columns:1fr;gap:4px}
+  .flow{gap:8px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
 </head>
 <body>
-  <h1>Welcome to my portfolio</h1>
-  <p>I am interested in electrical and computer engineering,
-     software development, and building practical solutions.</p>
-  <h2>Projects</h2>
-  <ul>
-    <li>Pedestrian Safety Warning System</li>
-    <li>GoalKeeper — Goal and Time Management App</li>
-    <li>International Collaboration and Leadership</li>
-  </ul>
-  <p>More project details are coming soon.</p>
+<div class="hero-background" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to content</a>
+<header>
+  <div class="wrap nav-shell">
+    <a class="brand" href="#main">Sih-Jhih Jian</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      Menu
+    </button>
+    <nav class="navlinks" id="site-nav" aria-label="Main navigation">
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a class="github" href="https://github.com/Thomapti">GitHub <span aria-hidden="true">&nbsp;↗</span></a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+  <div class="hero"><div class="wrap">
+    <p class="kicker">Student portfolio</p>
+    <h1>Sih-Jhih Jian</h1>
+    <p class="hero-field">Electrical &amp; Computer Engineering</p>
+    <p class="hero-intro">Student at Kaohsiung Senior High School, Taiwan. I explore embedded systems, software development, and robotics through hands-on projects.</p>
+    <div class="actions">
+      <a class="button" href="#projects">View projects <span aria-hidden="true">↓</span></a>
+      <a class="button secondary" href="https://github.com/Thomapti">GitHub <span aria-hidden="true">↗</span></a>
+    </div>
+  </div></div>
+
+  <section class="section-muted" id="projects" aria-labelledby="projects-title">
+    <div class="wrap">
+    <h2 class="section-title" id="projects-title">Projects</h2>
+    <article class="project">
+      <div class="project-content">
+        <div class="project-top">
+          <h3>Pedestrian Safety System</h3>
+          <span class="status">Prototype</span>
+        </div>
+        <p class="project-description">A collaborative project connecting vehicle detection to an LED warning, tested with a model vehicle.</p>
+        <dl class="facts">
+          <div><dt>Sensing</dt><dd>Magnet and Hall sensor.</dd></div>
+          <div><dt>Control</dt><dd>ESP32-controlled LED warning.</dd></div>
+          <div><dt>Road concept</dt><dd>Inductive loops for vehicle detection and speed estimation.</dd></div>
+        </dl>
+        <details>
+          <summary>Testing notes</summary>
+          <div class="details-copy">
+            <p>The model vehicle contained too little metal for reliable detection. A magnet and Hall sensor provided a practical way to test the warning sequence. This demonstrated the model setup; the inductive-loop road design remained a proposed approach.</p>
+          </div>
+        </details>
+      </div>
+      <figure class="project-visual">
+        <svg class="signal-scene" viewBox="0 0 460 240" role="img" aria-labelledby="safety-title safety-desc">
+          <title id="safety-title">Vehicle detection and crossing warning</title>
+          <desc id="safety-desc">A concept illustration shows a vehicle approaching a crossing. A detection marker connects to a warning light.</desc>
+          <rect x="0" y="65" width="460" height="121" rx="10" fill="#dde5f0"/>
+          <path d="M20 126H440" stroke="#6b7b91" stroke-width="2" stroke-dasharray="16 15"/>
+          <g fill="#fff">
+            <rect x="305" y="74" width="21" height="14" rx="2"/><rect x="305" y="97" width="21" height="14" rx="2"/><rect x="305" y="120" width="21" height="14" rx="2"/><rect x="305" y="143" width="21" height="14" rx="2"/><rect x="305" y="166" width="21" height="11" rx="2"/>
+          </g>
+          <rect x="61" y="84" width="105" height="38" rx="10" fill="#1d4ed8"/>
+          <rect x="88" y="90" width="40" height="25" rx="4" fill="#e8efff"/>
+          <path d="M137 91L154 95V111L137 115Z" fill="#adbef2"/>
+          <path d="M193 77V175" stroke="#1d4ed8" stroke-width="2" stroke-dasharray="5 5"/>
+          <circle cx="193" cy="199" r="6" fill="#1d4ed8"/>
+          <path d="M193 205V220H381V47" fill="none" stroke="#3768bd" stroke-width="2"/>
+          <rect x="360" y="7" width="42" height="42" rx="7" fill="#dce7ff" stroke="#1d4ed8" stroke-width="1.5"/>
+          <path d="M381 15L394 39H368Z" fill="none" stroke="#173b86" stroke-width="2"/>
+          <path d="M381 23V30M381 33V35" stroke="#173b86" stroke-width="2"/>
+        </svg>
+        <div class="flow" aria-label="Detect, process, warn">
+          <span>Detect</span><span class="arrow" aria-hidden="true">→</span>
+          <span>Process</span><span class="arrow" aria-hidden="true">→</span>
+          <span>Warn</span>
+        </div>
+        <figcaption>Illustration of the model concept.</figcaption>
+      </figure>
+    </article>
+
+    <article class="project">
+      <div class="project-content">
+        <div class="project-top">
+          <h3>GoalKeeper</h3>
+          <span class="status">In development</span>
+        </div>
+        <p class="project-description">A goal-management app design for scheduling work, tracking multiple sessions, and reviewing progress.</p>
+        <dl class="facts">
+          <div><dt>Plan</dt><dd>Start times, deadlines, and collections.</dd></div>
+          <div><dt>Track</dt><dd>Timer sessions, completion, and postponements.</dd></div>
+          <div><dt>Review</dt><dd>On-time rate, time spent, and planning accuracy.</dd></div>
+        </dl>
+        <details>
+          <summary>Design scope</summary>
+          <div class="details-copy">
+            <p>The planned app uses local storage, with offline use and backup/restore. Each goal can span multiple work sessions. Cross-device sync would require additional implementation.</p>
+          </div>
+        </details>
+      </div>
+      <figure class="project-visual">
+        <div class="app" role="img" aria-label="GoalKeeper interface concept with illustrative goals and a static session timer.">
+          <div class="app-head"><h4>GoalKeeper</h4><span class="app-label">Interface concept</span></div>
+          <div class="task"><p class="task-title">Review circuit notes</p><p class="task-time">16:00–17:00 · Completed</p></div>
+          <div class="task"><p class="task-title">Refine the app interface</p><p class="task-time">17:30–18:30 · In progress</p></div>
+          <div class="timer"><span class="timer-label">Session timer</span><strong>25:00</strong></div>
+        </div>
+        <figcaption>Design preview with illustrative data.</figcaption>
+      </figure>
+    </article>
+    </div>
+  </section>
+
+  <section class="about" id="about" aria-labelledby="about-title">
+    <div class="wrap about-grid">
+      <div>
+        <h2 class="section-title" id="about-title">About</h2>
+        <p>I began with Scratch and Arduino, then learned C, C++, and Python. I am interested in how software and hardware work together in practical systems.</p>
+        <div class="education">
+          <h3>Education</h3>
+          <p>Kaohsiung Senior High School, Taiwan</p>
+          <p class="date">Entered September 2024</p>
+        </div>
+      </div>
+      <div class="skills">
+        <h3>Skills &amp; interests</h3>
+        <dl class="facts">
+          <div><dt>Programming</dt><dd>C, C++, Python</dd></div>
+          <div><dt>Hardware</dt><dd>Arduino, ESP32, sensors</dd></div>
+          <div><dt>Interests</dt><dd>Embedded systems, robotics, control systems</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-muted" id="experience" aria-labelledby="experience-title">
+    <div class="wrap">
+    <h2 class="section-title" id="experience-title">Experience</h2>
+
+    <section class="experience-group" id="research-experience" aria-labelledby="research-title">
+      <h3 class="experience-group-title" id="research-title">Research Experience</h3>
+      <article class="experience-row">
+        <div class="year">2023–2024</div>
+        <div>
+          <h4>Pedestrian &amp; Vehicle Warning System</h4>
+          <p class="event">Green-energy-powered safety system</p>
+        </div>
+        <div>
+          <p>Co-developed a vehicle-detection and LED-warning system. First author of the journal article describing its design and sensing mechanism.</p>
+          <div class="experience-links">
+            <a href="https://doi.org/10.35745/ijesp2023v03.02.0002">Journal article <span aria-hidden="true">↗</span></a>
+            <a href="https://doi.org/10.1145/3659154.3659155">Conference paper <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </article>
+      <article class="experience-row">
+        <div class="year">2023</div>
+        <div>
+          <h4>Regional Factors &amp; Crime Rates</h4>
+          <p class="event">Researcher Cultivation Program<br>National Sun Yat-sen University</p>
+        </div>
+        <p>Completed mathematical and data-science research training. Sole student author of an independent study examining regional factors and reported crime rates.</p>
+      </article>
+    </section>
+
+    <section class="experience-group" id="international-collaboration" aria-labelledby="international-title">
+      <h3 class="experience-group-title" id="international-title">International Collaboration</h3>
+      <p class="section-intro">As team captain, I coordinate meetings, discussions, and joint presentations with international partners.</p>
+      <article class="experience-row">
+        <div class="year">2024</div>
+        <div>
+          <h4>Low-Carbon Diet</h4>
+          <p class="event">Asian Student Exchange Program</p>
+          <span class="award">Team award: Gold Award</span>
+        </div>
+        <p>Collaborated with international partners on a low-carbon diet project and joint presentation.</p>
+      </article>
+      <article class="experience-row">
+        <div class="year">2025</div>
+        <div>
+          <h4>Happy Traffic</h4>
+          <p class="event">Asian Student Exchange Program</p>
+          <span class="award">Team award: Platinum Award</span>
+        </div>
+        <p>Developed pedestrian-safety proposals with an overseas partner school, including vibration alerts, QR codes to extend crossing time, and pressure-sensing pavement.</p>
+      </article>
+      <article class="experience-row">
+        <div class="year">2026</div>
+        <div>
+          <h4>Kon-Kon no sato</h4>
+          <p class="event">World Youth Meeting</p>
+          <span class="award">Team award: Grand Platinum Prize</span>
+        </div>
+        <p>Co-created and presented a website addressing educational inequality, student mental health, and international collaborative learning.</p>
+      </article>
+    </section>
+
+    <section class="experience-group" id="social-participation" aria-labelledby="social-title">
+      <h3 class="experience-group-title" id="social-title">Social Participation</h3>
+      <article class="experience-row">
+        <div class="year">2025–2026</div>
+        <div>
+          <h4>Visual Design &amp; Publicity Officer</h4>
+          <p class="event">KS Programming Club</p>
+        </div>
+        <p>Designed promotional graphics and taught segment trees and their Python implementation to more than 20 junior club members.</p>
+      </article>
+      <article class="experience-row">
+        <div class="year">2026</div>
+        <div>
+          <h4>Volunteer Programming Instructor</h4>
+          <p class="event">San-Hou Elementary School, Kaohsiung</p>
+        </div>
+        <p>Introduced six elementary school students to BBC micro:bit and basic programming through hands-on activities and troubleshooting.</p>
+      </article>
+    </section>
+    </div>
+  </section>
+</main>
+<footer>
+  <div class="wrap footer-row">
+    <span class="footer-name">Sih-Jhih Jian</span>
+    <div class="footer-links"><a href="https://github.com/Thomapti">GitHub ↗</a><a href="#main">Back to top ↑</a></div>
+  </div>
+</footer>
+<script>
+(function () {
+  var root = document.documentElement;
+  var toggle = document.querySelector('.menu-toggle');
+  var nav = document.getElementById('site-nav');
+  var hero = document.querySelector('.hero');
+  var heroBackground = document.querySelector('.hero-background');
+  function updateHeroBackground() {
+    if (hero && heroBackground) {
+      var heroBottom = hero.getBoundingClientRect().bottom + window.scrollY;
+      heroBackground.style.height = Math.ceil(heroBottom) + 'px';
+    }
+  }
+  function setOpen(open) {
+    toggle.setAttribute('aria-expanded', String(open));
+    nav.setAttribute('data-open', String(open));
+    updateHeroBackground();
+  }
+  setOpen(false);
+  root.classList.add('js');
+  updateHeroBackground();
+  window.addEventListener('resize', updateHeroBackground);
+  if ('ResizeObserver' in window) {
+    var heroObserver = new ResizeObserver(updateHeroBackground);
+    heroObserver.observe(hero);
+    heroObserver.observe(document.querySelector('header'));
+  }
+  toggle.addEventListener('click', function () {
+    setOpen(toggle.getAttribute('aria-expanded') !== 'true');
+  });
+  nav.addEventListener('click', function (event) {
+    if (event.target.closest('a')) setOpen(false);
+  });
+  document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+      setOpen(false);
+      toggle.focus();
+    }
+  });
+}());
+</script>
 </body>
 </html>
